@@ -1,0 +1,93 @@
+spring:
+  profiles:
+    active: review
+
+
+
+
+---
+
+
+spring:
+  profiles: development
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/sbjpa
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+      ddl-auto: update
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+server:
+  port: 8080
+
+
+
+---
+
+
+spring:
+  profiles: wsl
+  datasource:
+    username: root
+    url: jdbc:mysql://192.168.1.10:3306/temp
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: create-drop
+
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+server:
+  port: 8080
+
+
+
+
+---
+
+
+spring:
+  profiles: review
+  datasource:
+    username: hyejeong
+    password: ENC(YXbdQsErstFCCthiGfMYPbCLP37vd7l2)
+    url: jdbc:mysql://mysql3.cs.stonybrook.edu:3306/hyejeong
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#      ddl-auto: validate
+      ddl-auto: update
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+server:
+  port: 8080
+
+jasypt:
+  encryptor:
+    password: retail_salt
+
